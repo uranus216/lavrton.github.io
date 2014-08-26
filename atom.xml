@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[JS Dev]]></title>
+  <title><![CDATA[Lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-08-26T23:24:05+08:00</updated>
+  <updated>2014-08-26T23:57:12+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -39,6 +39,9 @@ I want to calculate such categories of my life:</p>
 <li>Working with open source</li>
 <li>&hellip;</li>
 </ul>
+
+
+<!--more-->
 
 
 <p>Also I want to include AWESOME motivation technique that I am already using last 1.5 years
