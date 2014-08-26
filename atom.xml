@@ -4,7 +4,7 @@
   <title><![CDATA[JS Dev]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-08-26T17:48:35+08:00</updated>
+  <updated>2014-08-26T17:53:53+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -12,5 +12,14 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Launching 1 Month App]]></title>
+    <link href="http://lavrton.github.io/blog/2014/08/26/launching-1-month-app/"/>
+    <updated>2014-08-26T17:50:38+08:00</updated>
+    <id>http://lavrton.github.io/blog/2014/08/26/launching-1-month-app</id>
+    <content type="html"><![CDATA[<p>Test what can I do there.</p>
+]]></content>
+  </entry>
   
 </feed>
