@@ -4,7 +4,7 @@
   <title><![CDATA[JS Dev]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-08-26T17:53:53+08:00</updated>
+  <updated>2014-08-26T23:24:05+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -14,11 +14,57 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Launching 1 Month App]]></title>
+    <title type="html"><![CDATA[Launching 1 Month App - Day 1]]></title>
     <link href="http://lavrton.github.io/blog/2014/08/26/launching-1-month-app/"/>
     <updated>2014-08-26T17:50:38+08:00</updated>
     <id>http://lavrton.github.io/blog/2014/08/26/launching-1-month-app</id>
-    <content type="html"><![CDATA[<p>Test what can I do there.</p>
+    <content type="html"><![CDATA[<h2>Prequel</h2>
+
+<p>Today I want to launch new project. I want to call it &ldquo;tracker.io - Life statistic&rdquo;.
+The project is about statistic of your life and personal effectiveness.
+I want to calculate such categories of my life:</p>
+
+<ul>
+<li>How many hours I worked today?</li>
+<li>How many hours I slept?</li>
+<li>&hellip;</li>
+</ul>
+
+
+<p>Also I want to add &ldquo;Don&rsquo;t break the chain&rdquo; motivation technique:</p>
+
+<ul>
+<li>Fitness</li>
+<li>Reading</li>
+<li>Working with open source</li>
+<li>&hellip;</li>
+</ul>
+
+
+<p>Also I want to include AWESOME motivation technique that I am already using last 1.5 years
+(I will explain it in later posts).</p>
+
+<p>So what is my purpose. I am going to build website that will help me store such data and visualize it.
+Visualization is most import part of the project.</p>
+
+<p>I want to build this service in one month. I am not sure is it long or short interval.
+Just for definiteness and stimulus.</p>
+
+<h2>Starting the project</h2>
+
+<p>For a long time I was thinking about server side. Should I use it or not.
+I love &ldquo;thick&rdquo; javascript client application that can do everything itself without server side.
+Or with just different SAAS server side solution such as <code>Parse</code> or <code>Kinvey</code>.</p>
+
+<p>But I think this application will store a lot of data.
+And maybe some part of visualisation will be generate on server side.
+So I think using my own server will be easier in this case.</p>
+
+<p>While searching nodejs framework (I just want to learn nodejs) I choose sails.js.
+I don&rsquo;t need full-stack framework because I want to use React on client side.
+And I don&rsquo;t want to do a lot of stuff by myself with <code>connect</code> or <code>express</code> frameworks.</p>
+
+<p>I have 1 month do make good good product. 26 of September is a deadline for <code>tracker.io</code>. So lets go!</p>
 ]]></content>
   </entry>
   
