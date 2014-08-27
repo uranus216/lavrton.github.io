@@ -4,7 +4,7 @@
   <title><![CDATA[Lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-08-27T10:27:38+08:00</updated>
+  <updated>2014-08-27T23:13:52+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[One Month App - Day 2]]></title>
+    <link href="http://lavrton.github.io/blog/2014/08/27/one-month-app-day-2/"/>
+    <updated>2014-08-27T19:14:45+08:00</updated>
+    <id>http://lavrton.github.io/blog/2014/08/27/one-month-app-day-2</id>
+    <content type="html"><![CDATA[<p>First I created GitHub repo for the project. Repository is stored here: <a href="https://github.com/lavrton/tracker">https://github.com/lavrton/tracker</a>.</p>
+
+<p>For a long time I was thinking about design. I am not a designer. It is really hard to me to works with css and huge html files. So bootstap looks very nice there. Also I found a lot of nice admin templates. By I want to build application with ReactJS, so using bootstrap (with jquery) is bad idea. I found bootstrap-react project. Don&rsquo;t want to use it.</p>
+
+<!--more-->
+
+
+<p>So I was founding new css framework. One of the first in google search &ldquo;css framework&rdquo; was Pure. You know what? It looks pretty nice and it has a lot of stars on github&hellip;</p>
+
+<p>But I also found topcoat frameworks. And it looks awesome.</p>
+
+<p>So I installed SailsJS framework, topcoat, react. I was very sad when I found that WebStorm don&rsquo;t support <code>.jsx</code>!</p>
+
+<p>Now I need to think more about first features and design.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Launching 1 Month App - Day 1]]></title>
