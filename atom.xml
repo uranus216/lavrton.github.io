@@ -4,7 +4,7 @@
   <title><![CDATA[Lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-08-27T23:13:52+08:00</updated>
+  <updated>2014-08-29T10:17:09+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[One Month App - Day 3]]></title>
+    <link href="http://lavrton.github.io/blog/2014/08/29/one-month-app-day-3/"/>
+    <updated>2014-08-29T10:11:48+08:00</updated>
+    <id>http://lavrton.github.io/blog/2014/08/29/one-month-app-day-3</id>
+    <content type="html"><![CDATA[<p>Today I was learning React work flow. Looks very easy. Documentation and examples are ample.</p>
+
+<p>But I have some problems with SailsJS. Randomly I found how to create new models. Now I need to sync server and client models. It is very easy to read all models from server. But how to config listening of creating new models? I need to immediately notification to client side via socket.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[One Month App - Day 2]]></title>
