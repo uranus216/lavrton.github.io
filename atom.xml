@@ -4,7 +4,7 @@
   <title><![CDATA[Lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-08-29T10:17:09+08:00</updated>
+  <updated>2014-09-01T00:34:34+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -14,13 +14,33 @@
 
   
   <entry>
+    <title type="html"><![CDATA[One Month App - Day 6 - Sketch 1]]></title>
+    <link href="http://lavrton.github.io/blog/2014/08/31/one-month-app-day-6-sketch-1/"/>
+    <updated>2014-08-31T23:39:44+08:00</updated>
+    <id>http://lavrton.github.io/blog/2014/08/31/one-month-app-day-6-sketch-1</id>
+    <content type="html"><![CDATA[<p>I spent a lot of time to discover sails framework. It looks like they are refactoring documentation pages. So it is really hard to find information. Many links are broken. Google and stackoverflow help me and I don&rsquo;t really like it.</p>
+
+<p>Now I am on sketching state.</p>
+
+<p>First module &ldquo;daily report&rdquo;:
+<img class="center" src="http://lavrton.github.io/images/dash-sketch-1.jpg" title="" ></p>
+
+<!--more-->
+
+
+<p>Then &ldquo;storyline&rdquo;. It includes instagram, twitter (thinking about other services) messages:
+<img class="center" src="http://lavrton.github.io/images/storyline-sketch-1.jpg" title="" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[One Month App - Day 3]]></title>
     <link href="http://lavrton.github.io/blog/2014/08/29/one-month-app-day-3/"/>
     <updated>2014-08-29T10:11:48+08:00</updated>
     <id>http://lavrton.github.io/blog/2014/08/29/one-month-app-day-3</id>
-    <content type="html"><![CDATA[<p>Today I was learning React work flow. Looks very easy. Documentation and examples are ample.</p>
+    <content type="html"><![CDATA[<p>Today I was learning React work flow. It looks very easy. Documentation and examples are ample.</p>
 
-<p>But I have some problems with SailsJS. Randomly I found how to create new models. Now I need to sync server and client models. It is very easy to read all models from server. But how to config listening of creating new models? I need to immediately notification to client side via socket.</p>
+<p>But I have some problems with SailsJS. Randomly I found how to create new models. Now I need to sync server and client models. It is very easy to read all models from server. But how to config listening of creating new models? I need an immediately notification to client side via socket. I need more time to learn it.</p>
 ]]></content>
   </entry>
   
@@ -31,18 +51,18 @@
     <id>http://lavrton.github.io/blog/2014/08/27/one-month-app-day-2</id>
     <content type="html"><![CDATA[<p>First I created GitHub repo for the project. Repository is stored here: <a href="https://github.com/lavrton/tracker">https://github.com/lavrton/tracker</a>.</p>
 
-<p>For a long time I was thinking about design. I am not a designer. It is really hard to me to works with css and huge html files. So bootstap looks very nice there. Also I found a lot of nice admin templates. By I want to build application with ReactJS, so using bootstrap (with jquery) is bad idea. I found bootstrap-react project. Don&rsquo;t want to use it.</p>
+<p>For a long time I was thinking about design. I am not a designer. It is really hard to me to work with css and huge html files. So bootstap looks very nice there. Also I found a lot of nice admin templates. But I want to build application with ReactJS, so using bootstrap (with jquery) is a bad idea (may be). I found bootstrap-react project. Don&rsquo;t want to use it.</p>
 
 <!--more-->
 
 
-<p>So I was founding new css framework. One of the first in google search &ldquo;css framework&rdquo; was Pure. You know what? It looks pretty nice and it has a lot of stars on github&hellip;</p>
+<p>So I was searching for a new css framework. One of the first was Pure in google search &ldquo;css framework&rdquo;. Do you know what? It looks pretty nice and it has a lot of stars on github&hellip;</p>
 
 <p>But I also found topcoat frameworks. And it looks awesome.</p>
 
-<p>So I installed SailsJS framework, topcoat, react. I was very sad when I found that WebStorm don&rsquo;t support <code>.jsx</code>!</p>
+<p>So I installed SailsJS framework, topcoat, react. I was very sad when I knew that WebStorm doesn&rsquo;t support <code>.jsx</code>!</p>
 
-<p>Now I need to think more about first features and design.</p>
+<p>Now I have to think more about first features and design.</p>
 ]]></content>
   </entry>
   
@@ -53,18 +73,18 @@
     <id>http://lavrton.github.io/blog/2014/08/26/launching-1-month-app</id>
     <content type="html"><![CDATA[<h2>Prequel</h2>
 
-<p>Today I want to launch new project. I want to call it &ldquo;tracker.io - Life statistic&rdquo;.
+<p>Today I want to launch a new project. I want to call it &ldquo;tracker.io - Life statistic&rdquo;.
 The project is about statistic of your life and personal effectiveness.
 I want to calculate such categories of my life:</p>
 
 <ul>
-<li>How many hours I worked today?</li>
-<li>How many hours I slept?</li>
+<li>How many hours did I work today?</li>
+<li>How many hours did I sleep?</li>
 <li>&hellip;</li>
 </ul>
 
 
-<p>Also I want to add &ldquo;Don&rsquo;t break the chain&rdquo; motivation technique:</p>
+<p>Also I&rsquo;d like to add &ldquo;Don&rsquo;t break the chain&rdquo; motivation technique:</p>
 
 <ul>
 <li>Fitness</li>
@@ -77,13 +97,13 @@ I want to calculate such categories of my life:</p>
 <!--more-->
 
 
-<p>Also I want to include AWESOME motivation technique that I am already using last 1.5 years
+<p>One more thing I&rsquo;d like to include AWESOME motivation technique that I am already using last 1.5 years
 (I will explain it in later posts).</p>
 
 <p>So what is my purpose. I am going to build website that will help me store such data and visualize it.
-Visualization is most import part of the project.</p>
+Visualization is the most important part of the project.</p>
 
-<p>I want to build this service in one month. I am not sure is it long or short interval.
+<p>I am going to build this service in one month. I am not sure is it long or short interval.
 Just for definiteness and stimulus.</p>
 
 <h2>Starting the project</h2>
@@ -92,15 +112,15 @@ Just for definiteness and stimulus.</p>
 I love &ldquo;thick&rdquo; javascript client application that can do everything itself without server side.
 Or with just different SAAS server side solution such as <code>Parse</code> or <code>Kinvey</code>.</p>
 
-<p>But I think this application will store a lot of data.
-And maybe some part of visualisation will be generate on server side.
-So I think using my own server will be easier in this case.</p>
+<p>But I think my application will store a lot of data.
+And may be some parts of the visualisation will be generated on server side.
+So using my own server will be easier in this case.</p>
 
 <p>While searching nodejs framework (I just want to learn nodejs) I choose sails.js.
 I don&rsquo;t need full-stack framework because I want to use React on client side.
 And I don&rsquo;t want to do a lot of stuff by myself with <code>connect</code> or <code>express</code> frameworks.</p>
 
-<p>I have 1 month do make good good product. 26 of September is a deadline for <code>tracker.io</code>. So lets go!</p>
+<p>I have 1 month to make a good product. The 26th of September is a deadline for <code>Tracker</code>. So let&rsquo;s go!</p>
 ]]></content>
   </entry>
   

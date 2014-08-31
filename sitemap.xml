@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://lavrton.github.io/blog/2014/08/31/one-month-app-day-6-sketch-1/</loc>
+    <lastmod>2014-08-31T23:39:44+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://lavrton.github.io/blog/2014/08/29/one-month-app-day-3/</loc>
     <lastmod>2014-08-29T10:11:48+08:00</lastmod>
     <priority>0.8</priority>
@@ -23,14 +29,14 @@
   
   <url>
     <loc>http://lavrton.github.io/blog/archives/</loc>
-    <lastmod>2014-08-29T10:17:09+08:00</lastmod>
+    <lastmod>2014-09-01T00:34:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lavrton.github.io/</loc>
-    <lastmod>2014-08-29T10:17:09+08:00</lastmod>
+    <lastmod>2014-09-01T00:34:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
