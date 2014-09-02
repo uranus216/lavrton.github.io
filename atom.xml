@@ -4,7 +4,7 @@
   <title><![CDATA[Lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-09-01T00:34:34+08:00</updated>
+  <updated>2014-09-02T18:27:36+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[One Month App - Day 8]]></title>
+    <link href="http://lavrton.github.io/blog/2014/09/02/one-month-app-day-8/"/>
+    <updated>2014-09-02T18:11:26+08:00</updated>
+    <id>http://lavrton.github.io/blog/2014/09/02/one-month-app-day-8</id>
+    <content type="html"><![CDATA[<p>Today I was implementing <code>don't break the chain</code> part. I have no problems with ReactJS. It is really easy to use it for me. But I feel that I am using it in wrong way. I need to find some articles about the best practises.</p>
+
+<p>For example for now I have <code>App</code> class. It has <code>onDelete</code> method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">onDelete</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">question</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">questions</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">question</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">questions</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">throw</span> <span class="s2">&quot;Can&#39;t delete question from state. Has no such question.&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I pass this method into child component:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// render function</span>
+</span><span class='line'><span class="nx">QuestionList</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">questions</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">questions</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">onDelete</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">onDelete</span>  <span class="c1">// pass inside</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But <code>QuestionList</code> also have children, and I need to pass <code>onDelete</code> method into them:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">createItem</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">question</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">AnswerComponent</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">question</span> <span class="o">:</span> <span class="nx">question</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">onDelete</span> <span class="o">:</span> <span class="nx">that</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onDelete</span> <span class="c1">// pass inside again</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Passing same method twice looks very strange for me&hellip;</p>
+
+<p>Currently I have this prototype:
+<img class="center" src="http://lavrton.github.io/images/dash-proto-1.jpg" title="" ></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[One Month App - Day 6 - Sketch 1]]></title>
