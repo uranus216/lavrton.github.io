@@ -4,7 +4,7 @@
   <title><![CDATA[Lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-09-02T18:27:36+08:00</updated>
+  <updated>2014-09-04T20:21:35+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[One Month App - Day 9 - Heroku Deploy]]></title>
+    <link href="http://lavrton.github.io/blog/2014/09/03/one-month-app-day-9-heroku-deploy/"/>
+    <updated>2014-09-03T20:56:31+08:00</updated>
+    <id>http://lavrton.github.io/blog/2014/09/03/one-month-app-day-9-heroku-deploy</id>
+    <content type="html"><![CDATA[<p>Deployment to heroku was not very hard. I started from there <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction">https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction</a>. Then VERY helpful article about <code>heroku</code> and <code>sailsjs</code>: <a href="http://brentvatne.ca/deploy-sails-to-heroku/">http://brentvatne.ca/deploy-sails-to-heroku/</a>.</p>
+
+<p>Now current version is available here: <a href="http://trackerio.herokuapp.com/">http://trackerio.herokuapp.com/</a>.</p>
+
+<p>Now I need to create first useful version, so I&rsquo;d like to start to use it by myself.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[One Month App - Day 8]]></title>
