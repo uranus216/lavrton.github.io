@@ -4,7 +4,7 @@
   <title><![CDATA[Lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-09-04T20:21:35+08:00</updated>
+  <updated>2014-09-06T23:41:13+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[One Month App - Day 12 - First Minimal Version]]></title>
+    <link href="http://lavrton.github.io/blog/2014/09/06/one-month-app-day-12-first-minimal-version/"/>
+    <updated>2014-09-06T22:51:51+08:00</updated>
+    <id>http://lavrton.github.io/blog/2014/09/06/one-month-app-day-12-first-minimal-version</id>
+    <content type="html"><![CDATA[<h2>Dashboard version 2</h2>
+
+<p>I was thinking about new view for dashboard. Here is the sketch:</p>
+
+<p><img class="center" src="http://lavrton.github.io/images/sketch-2-dash-1.jpg" title="" ></p>
+
+<p>Almost everything will be available on one page:</p>
+
+<ul>
+<li>Daily report inputs</li>
+<li>&ldquo;Add new question&rdquo; component</li>
+<li>Reports widget for questions and answers</li>
+</ul>
+
+
+<p>I found good repo that helps me build calendar widget <a href="http://kamisama.github.io/cal-heatmap/">http://kamisama.github.io/cal-heatmap/</a> (almost as GitHub widget).</p>
+
+<p>My current version:</p>
+
+<p><img class="center" src="http://lavrton.github.io/images/dash-2.png" title="" ></p>
+
+<p>Building client side code (my, <code>React</code>, <code>cal-heatmap</code>, <code>d3</code>) into one file with <code>browserify</code> and <code>Grunt</code> is REALLY slow&hellip; <strong>Argh&hellip;.</strong>. And <code>Sails.JS</code> already using <code>Grunt</code> for all task, so switching to <code>gulp</code> might be bad idea.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[One Month App - Day 9 - Heroku Deploy]]></title>

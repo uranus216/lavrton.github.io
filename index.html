@@ -9,7 +9,7 @@
   <meta name="author" content="Anton Lavrenov">
 
   
-  <meta name="description" content="Deployment to heroku was not very hard. I started from there https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction. Then &hellip;">
+  <meta name="description" content="Dashboard version 2 I was thinking about new view for dashboard. Here is the sketch: Almost everything will be available on one page: Daily report &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/06/one-month-app-day-12-first-minimal-version/">One Month App - Day 12 - First Minimal Version</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-06T22:51:51+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:51 pm</span></time>
+        
+           | <a href="/blog/2014/09/06/one-month-app-day-12-first-minimal-version/#disqus_thread"
+             data-disqus-identifier="http://lavrton.github.io/blog/2014/09/06/one-month-app-day-12-first-minimal-version/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Dashboard version 2</h2>
+
+<p>I was thinking about new view for dashboard. Here is the sketch:</p>
+
+<p><img class="center" src="/images/sketch-2-dash-1.jpg" title="" ></p>
+
+<p>Almost everything will be available on one page:</p>
+
+<ul>
+<li>Daily report inputs</li>
+<li>&ldquo;Add new question&rdquo; component</li>
+<li>Reports widget for questions and answers</li>
+</ul>
+
+
+<p>I found good repo that helps me build calendar widget <a href="http://kamisama.github.io/cal-heatmap/">http://kamisama.github.io/cal-heatmap/</a> (almost as GitHub widget).</p>
+
+<p>My current version:</p>
+
+<p><img class="center" src="/images/dash-2.png" title="" ></p>
+
+<p>Building client side code (my, <code>React</code>, <code>cal-heatmap</code>, <code>d3</code>) into one file with <code>browserify</code> and <code>Grunt</code> is REALLY slow&hellip; <strong>Argh&hellip;.</strong>. And <code>Sails.JS</code> already using <code>Grunt</code> for all task, so switching to <code>gulp</code> might be bad idea.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -408,6 +461,10 @@ I want to calculate such categories of my life:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/06/one-month-app-day-12-first-minimal-version/">One Month App - Day 12 - First Minimal Version</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/03/one-month-app-day-9-heroku-deploy/">One Month App - Day 9 - Heroku Deploy</a>
       </li>
     
@@ -421,10 +478,6 @@ I want to calculate such categories of my life:</p>
     
       <li class="post">
         <a href="/blog/2014/08/29/one-month-app-day-3/">One Month App - Day 3</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/08/27/one-month-app-day-2/">One Month App - Day 2</a>
       </li>
     
   </ul>
