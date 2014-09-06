@@ -4,7 +4,7 @@
   <title><![CDATA[Lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-09-06T23:41:13+08:00</updated>
+  <updated>2014-09-06T23:42:26+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -23,6 +23,9 @@
 <p>I was thinking about new view for dashboard. Here is the sketch:</p>
 
 <p><img class="center" src="http://lavrton.github.io/images/sketch-2-dash-1.jpg" title="" ></p>
+
+<!--more-->
+
 
 <p>Almost everything will be available on one page:</p>
 
