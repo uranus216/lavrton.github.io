@@ -4,7 +4,7 @@
   <title><![CDATA[Lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2014-10-09T14:30:50+08:00</updated>
+  <updated>2014-10-14T14:43:34+08:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Use Tracker App]]></title>
+    <link href="http://lavrton.github.io/blog/2014/10/14/how-to-use-tracker-app/"/>
+    <updated>2014-10-14T12:12:29+08:00</updated>
+    <id>http://lavrton.github.io/blog/2014/10/14/how-to-use-tracker-app</id>
+    <content type="html"><![CDATA[<p>Currently (October 2014) the <a href="http://trackerio.herokuapp.com/">Tracker</a> application has 2 main modules:</p>
+
+<ul>
+<li>Daily purposes</li>
+<li>Don&rsquo;t break the chain</li>
+</ul>
+
+
+<p>I am going to describe in details how I am using the app with this modules.</p>
+
+<h1>Daily purposes</h1>
+
+<p>Each day in the morning I write my ~10 life purposes. They might be long-term and short-term as well.
+Examples:</p>
+
+<ul>
+<li>Finish One Month project</li>
+<li>Financial comfort - make cool project</li>
+<li>Have nice body - workouts</li>
+</ul>
+
+
+<p>As you can see in two last examples I try to write purposes in this pattern: &ldquo;What do I want - What should I do&rdquo;. In better and more common variant pattern should be: &ldquo;What do I want to get - What can I give&rdquo;. &ldquo;Get&rdquo; - for yourself, &ldquo;Give&rdquo; - to the world. Remember, this is not tasks! In my opinion it is better to write tasks in the evening.</p>
+
+<p>When you finish with purposes you may &ldquo;forget&rdquo; about them, probably you will not need obtained list any more. Every day you should write purposes again and again. You should not look at the old purpose lists when you are writing a new one. While writing purposes you have to think of &ldquo;what do you want&rdquo; from your life and in such way you are targeting the main direction of your life.</p>
+
+<p>Conditions are changing every day, so your purposes can be changed too (formulation, time limit, etc).</p>
+
+<h1>Don&rsquo;t break the chain</h1>
+
+<p>This is very popular technique. You can read the full description here <a href="http://lifehacker.com/281626/jerry-seinfelds-productivity-secret">http://lifehacker.com/281626/jerry-seinfelds-productivity-secret</a>.</p>
+
+<p>Currently I have three chains:</p>
+
+<ol>
+<li>Fitness</li>
+<li>Reading (~ 5 pages of foreign book)</li>
+<li>Writing (any article/image/video into personal diary)</li>
+</ol>
+
+
+<p>Also I have included &ldquo;purposes&rdquo; module as one of chains.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[One Month App - Day 44 - Done!]]></title>
