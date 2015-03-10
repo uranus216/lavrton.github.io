@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://lavrton.github.io/sitemap.xml 
