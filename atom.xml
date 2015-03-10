@@ -4,7 +4,7 @@
   <title><![CDATA[lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2015-03-10T01:41:13+00:00</updated>
+  <updated>2015-03-10T04:55:23+00:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -30,21 +30,21 @@ Or if you are offline a while.</p>
 
 <p>You can use this url for new tags:</p>
 
-<p><code>https://github.com/{:user}/{:repository}/tags.atom</code></p>
+<p><code>https://github.com/{user}/{repository}/tags.atom</code></p>
 
 <p>For example backbone feed: <a href="https://github.com/jashkenas/backbone/tags.atom">https://github.com/jashkenas/backbone/tags.atom</a></p>
 
-<p>or this for new releases (if contribures makes releases in github way) otherwise it is the same as &ldquo;tags&rdquo; feed:</p>
+<p>or this url for new releases (if contributors make releases in github way) otherwise it is the same as &ldquo;tags&rdquo; feed:</p>
 
-<p><code>https://github.com/{:user}/{:repository}/releases.atom</code></p>
+<p><code>https://github.com/{user}/{repository}/releases.atom</code></p>
 
-<p>If your framework make good github releases messages it is better to use &ldquo;releases&rdquo; feed.
-For examle look at <a href="https://github.com/photonstorm/phaser/releases.atom">Phaser feed</a></p>
+<p>For examle look at phaser.js feed <a href="https://github.com/photonstorm/phaser/releases.atom">https://github.com/photonstorm/phaser/releases.atom</a></p>
 
 <h3>Want to get notified via email?</h3>
 
-<p>We have a solution with <a href="http://ifttt.com/">ifttt.com</a>.
-See my example recipe: <a href="https://ifttt.com/recipes/267571-email-me-when-new-version-of-konva-js-is-out">Konva.js new version notification</a></p>
+<p>We have a solution with <a href="http://ifttt.com/">ifttt.com</a>.</p>
+
+<p>See my example recipe: <a href="https://ifttt.com/recipes/267571-email-me-when-new-version-of-konva-js-is-out">Konva.js new version notification</a></p>
 ]]></content>
   </entry>
   
