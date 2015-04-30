@@ -1,0 +1,20 @@
+/* top buttons */
+.buttons {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    display: inline-block;
+    width : 100%;
+}
+
+.tripEditor {
+    position: fixed;
+    left: 40%;
+    top: 20%;
+    border: solid 2px grey;
+    background-color: white;
+}
+
+.tripEditor input {
+    width : 100px;
+}
