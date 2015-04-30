@@ -1,0 +1,27 @@
+{
+  "curly": true,
+  "immed": true,   
+  "latedef": true, 
+  "newcap": true, 
+  "noarg": true,  
+  "sub": true,    
+  "undef": true,    
+  "boss": true,     
+  "eqnull": true,  
+  "node": true,
+  "latedef": false,
+  "unused": true,
+  "trailing" : true,
+  "laxbreak" : true,
+  "globals": { 
+    "Kinetic": false,
+    "document": false,
+    "window" : false,
+    "navigator" : false,
+    "define" : false,
+    "Image" : false,
+    "assert" : false,
+    "test": false,
+    "addStage" : false
+  }
+}
