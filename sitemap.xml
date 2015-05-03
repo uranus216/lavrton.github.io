@@ -3,8 +3,20 @@
   
   
   <url>
+    <loc>http://lavrton.github.io/blog/2015/04/03/konva-overview/</loc>
+    <lastmod>2015-04-03T01:00:03+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://lavrton.github.io/blog/2015/03/10/get-notified-when-new-version-of-lib-is-out/</loc>
     <lastmod>2015-03-10T01:00:05+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/blog/2014/11/05/using-backbone-for-html5-canvas/</loc>
+    <lastmod>2014-11-05T01:10:32+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
@@ -74,24 +86,30 @@
     <priority>0.8</priority>
   </url>
   
+  <url>
+    <loc>http://lavrton.github.io/blog/2014/05/03/how-to-fix-android-html5-canvas-issues/</loc>
+    <lastmod>2014-05-03T01:06:13+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
   
   <url>
     <loc>http://lavrton.github.io/blog/archives/</loc>
-    <lastmod>2015-04-30T04:43:46+00:00</lastmod>
+    <lastmod>2015-05-03T08:34:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lavrton.github.io/</loc>
-    <lastmod>2015-04-30T04:43:46+00:00</lastmod>
+    <lastmod>2015-05-03T08:34:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://lavrton.github.io/portfolio/</loc>
-    <lastmod>2015-04-30T04:43:46+00:00</lastmod>
+    <lastmod>2015-05-03T08:34:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

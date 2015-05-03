@@ -4,7 +4,7 @@
   <title><![CDATA[lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2015-04-30T04:43:46+00:00</updated>
+  <updated>2015-05-03T08:34:00+00:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Konva Overview]]></title>
+    <link href="http://lavrton.github.io/blog/2015/04/03/konva-overview/"/>
+    <updated>2015-04-03T01:00:03+00:00</updated>
+    <id>http://lavrton.github.io/blog/2015/04/03/konva-overview</id>
+    <content type="html"><![CDATA[<p>As I maintain Konva project (2d canvas framework) I wrote large post with overview of all main feautures.
+The post is published on Konva site. See <a href="http://konvajs.github.io/docs/overview.html">http://konvajs.github.io/docs/overview.html</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Get Notified When New Version of Lib Is Out]]></title>
@@ -45,6 +55,16 @@ Or if you are offline a while.</p>
 <p>We have a solution with <a href="http://ifttt.com/">ifttt.com</a>.</p>
 
 <p>See my example recipe: <a href="https://ifttt.com/recipes/267571-email-me-when-new-version-of-konva-js-is-out">Konva.js new version notification</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using Backbone for Html5 Canvas]]></title>
+    <link href="http://lavrton.github.io/blog/2014/11/05/using-backbone-for-html5-canvas/"/>
+    <updated>2014-11-05T01:10:32+00:00</updated>
+    <id>http://lavrton.github.io/blog/2014/11/05/using-backbone-for-html5-canvas</id>
+    <content type="html"><![CDATA[<p>I wrote an article about Backbone Views for canvas element via KineticJS/Konva.
+<a href="http://slash-system.com/en/using-backbone-for-html5-canvas/">http://slash-system.com/en/using-backbone-for-html5-canvas/</a></p>
 ]]></content>
   </entry>
   
@@ -436,6 +456,16 @@ I don&rsquo;t need full-stack framework because I want to use React on client si
 And I don&rsquo;t want to do a lot of stuff by myself with <code>connect</code> or <code>express</code> frameworks.</p>
 
 <p>I have 1 month to make a good product. The 26th of September is a deadline for <code>Tracker</code>. So let&rsquo;s go!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Fix Android Html5 Canvas Issues]]></title>
+    <link href="http://lavrton.github.io/blog/2014/05/03/how-to-fix-android-html5-canvas-issues/"/>
+    <updated>2014-05-03T01:06:13+00:00</updated>
+    <id>http://lavrton.github.io/blog/2014/05/03/how-to-fix-android-html5-canvas-issues</id>
+    <content type="html"><![CDATA[<p>My post about fixing some html5 canvas problems on android devices.
+<a href="http://slash-system.com/en/how-to-fix-android-html5-canvas-issues/">http://slash-system.com/en/how-to-fix-android-html5-canvas-issues/</a></p>
 ]]></content>
   </entry>
   
