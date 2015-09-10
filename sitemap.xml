@@ -95,21 +95,21 @@
   
   <url>
     <loc>http://lavrton.github.io/blog/archives/</loc>
-    <lastmod>2015-05-03T08:34:00+00:00</lastmod>
+    <lastmod>2015-09-10T09:27:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lavrton.github.io/</loc>
-    <lastmod>2015-05-03T08:34:00+00:00</lastmod>
+    <lastmod>2015-09-10T09:27:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://lavrton.github.io/portfolio/</loc>
-    <lastmod>2015-05-03T08:34:00+00:00</lastmod>
+    <lastmod>2015-09-10T09:27:22+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -128,14 +128,8 @@
   </url>
   
   <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/index.html</loc>
-    <lastmod>2015-04-30T00:34:47Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/dynamic.html</loc>
-    <lastmod>2015-04-30T00:34:50Z</lastmod>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/docs.html</loc>
+    <lastmod>2015-04-30T00:34:46Z</lastmod>
     <priority>0.6</priority>
   </url>
   
@@ -152,13 +146,19 @@
   </url>
   
   <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/accesskeys.html</loc>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/html5-polyfill-firefox8.html</loc>
     <lastmod>2015-04-30T00:34:50Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/html5-polyfill-firefox8.html</loc>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/menu-title.html</loc>
+    <lastmod>2015-04-30T00:34:51Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/html5-import.html</loc>
     <lastmod>2015-04-30T00:34:50Z</lastmod>
     <priority>0.6</priority>
   </url>
@@ -170,43 +170,7 @@
   </url>
   
   <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/trigger-left-click.html</loc>
-    <lastmod>2015-04-30T00:34:51Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/disabled-callback.html</loc>
-    <lastmod>2015-04-30T00:34:50Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/sub-menus.html</loc>
-    <lastmod>2015-04-30T00:34:51Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/trigger-custom.html</loc>
-    <lastmod>2015-04-30T00:34:51Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/keeping-contextmenu-open.html</loc>
-    <lastmod>2015-04-30T00:34:51Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/trigger-hover-autohide.html</loc>
-    <lastmod>2015-04-30T00:34:51Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/menu-title.html</loc>
     <lastmod>2015-04-30T00:34:51Z</lastmod>
     <priority>0.6</priority>
   </url>
@@ -218,37 +182,7 @@
   </url>
   
   <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/async-create.html</loc>
-    <lastmod>2015-04-30T00:34:50Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/disabled-changing.html</loc>
-    <lastmod>2015-04-30T00:34:50Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/custom-command.html</loc>
-    <lastmod>2015-04-30T00:34:50Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/on-dom-element.html</loc>
-    <lastmod>2015-04-30T00:34:51Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/html5-polyfill.html</loc>
-    <lastmod>2015-04-30T00:34:50Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/html5-import.html</loc>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/accesskeys.html</loc>
     <lastmod>2015-04-30T00:34:50Z</lastmod>
     <priority>0.6</priority>
   </url>
@@ -260,8 +194,44 @@
   </url>
   
   <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/trigger-left-click.html</loc>
+    <lastmod>2015-04-30T00:34:51Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/on-dom-element.html</loc>
+    <lastmod>2015-04-30T00:34:51Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/sub-menus.html</loc>
+    <lastmod>2015-04-30T00:34:51Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/disabled-callback.html</loc>
+    <lastmod>2015-04-30T00:34:50Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/disabled-changing.html</loc>
+    <lastmod>2015-04-30T00:34:50Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/trigger-hover.html</loc>
     <lastmod>2015-04-30T00:34:51Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/dynamic.html</loc>
+    <lastmod>2015-04-30T00:34:50Z</lastmod>
     <priority>0.6</priority>
   </url>
   
@@ -272,14 +242,44 @@
   </url>
   
   <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/async-create.html</loc>
+    <lastmod>2015-04-30T00:34:50Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/trigger-custom.html</loc>
+    <lastmod>2015-04-30T00:34:51Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/html5-polyfill.html</loc>
+    <lastmod>2015-04-30T00:34:50Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/custom-command.html</loc>
+    <lastmod>2015-04-30T00:34:50Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo/keeping-contextmenu-open.html</loc>
+    <lastmod>2015-04-30T00:34:51Z</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/demo.html</loc>
     <lastmod>2015-04-30T00:34:46Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/docs.html</loc>
-    <lastmod>2015-04-30T00:34:46Z</lastmod>
+    <loc>http://lavrton.github.io/portfolio/canvas_trips/bower_components/jQuery-contextMenu/index.html</loc>
+    <lastmod>2015-04-30T00:34:47Z</lastmod>
     <priority>0.6</priority>
   </url>
   
