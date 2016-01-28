@@ -4,7 +4,7 @@
   <title><![CDATA[lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2016-01-25T02:56:14+00:00</updated>
+  <updated>2016-01-28T09:44:47+00:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Backbone With Html5 Canvas]]></title>
+    <link href="http://lavrton.github.io/blog/2016/01/28/using-backbone-with-html5-canvas/"/>
+    <updated>2016-01-28T09:31:43+00:00</updated>
+    <id>http://lavrton.github.io/blog/2016/01/28/using-backbone-with-html5-canvas</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Konva Overview]]></title>

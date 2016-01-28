@@ -9,7 +9,7 @@
   <meta name="author" content="Anton Lavrenov">
 
   
-  <meta name="description" content="I spent a lot of time to discover sails framework. It looks like they are refactoring documentation pages. So it is really hard to find information. &hellip;">
+  <meta name="description" content="Today I was implementing don't break the chain part. I have no problems with ReactJS. It is really easy to use it for me. But I feel that I am using &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,98 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/02/one-month-app-day-8/">One Month App - Day 8</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-02T10:11:26+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>10:11 am</span></time>
+        
+           | <a href="/blog/2014/09/02/one-month-app-day-8/#disqus_thread"
+             data-disqus-identifier="http://lavrton.github.io/blog/2014/09/02/one-month-app-day-8/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today I was implementing <code>don't break the chain</code> part. I have no problems with ReactJS. It is really easy to use it for me. But I feel that I am using it in wrong way. I need to find some articles about the best practises.</p>
+
+<p>For example for now I have <code>App</code> class. It has <code>onDelete</code> method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">onDelete</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">question</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">questions</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">question</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">questions</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">throw</span> <span class="s2">&quot;Can&#39;t delete question from state. Has no such question.&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I pass this method into child component:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// render function</span>
+</span><span class='line'><span class="nx">QuestionList</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">questions</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">questions</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">onDelete</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">onDelete</span>  <span class="c1">// pass inside</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But <code>QuestionList</code> also have children, and I need to pass <code>onDelete</code> method into them:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">createItem</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">question</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">AnswerComponent</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">question</span> <span class="o">:</span> <span class="nx">question</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">onDelete</span> <span class="o">:</span> <span class="nx">that</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onDelete</span> <span class="c1">// pass inside again</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Passing same method twice looks very strange for me&hellip;</p>
+
+<p>Currently I have this prototype:
+<img class="center" src="/images/dash-proto-1.jpg" title="" ></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -316,6 +408,10 @@ I want to calculate such categories of my life:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/28/using-backbone-with-html5-canvas/">Using Backbone With Html5 Canvas</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/04/03/konva-overview/">Konva Overview</a>
       </li>
     
@@ -329,10 +425,6 @@ I want to calculate such categories of my life:</p>
     
       <li class="post">
         <a href="/blog/2014/10/14/how-to-use-tracker-app/">How to Use Tracker App</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/08/one-month-app-day-44-finish/">One Month App - Day 44 - Done!</a>
       </li>
     
   </ul>
