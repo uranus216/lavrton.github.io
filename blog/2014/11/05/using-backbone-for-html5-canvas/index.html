@@ -9,9 +9,9 @@
   <meta name="author" content="Anton Lavrenov">
 
   
-  <meta name="description" content="I wrote an article about Backbone Views for canvas element via KineticJS/Konva.
-http://slash-system.com/en/using-backbone-for-html5-canvas/
-">
+  <meta name="description" content="1 Description of the problem While developing mind map application Slash System,
+I chose Backbone as the main library to build an application.
+The &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,8 +102,145 @@ http://slash-system.com/en/using-backbone-for-html5-canvas/
   </header>
 
 
-<div class="entry-content"><p>I wrote an article about Backbone Views for canvas element via KineticJS/Konva.
-<a href="http://slash-system.com/en/using-backbone-for-html5-canvas/">http://slash-system.com/en/using-backbone-for-html5-canvas/</a></p>
+<div class="entry-content"><h2>1 Description of the problem</h2>
+
+<p>While developing mind map application Slash System,
+I chose Backbone as the main library to build an application.
+The mind map is drawn into <code>&lt;canvas&gt;</code> element using various primitives.
+We chose KineticJS (now it is <a href="http://konvajs.github.io/">Konva</a>) library to work with canvas,
+as it perfectly supports events for objects on the canvas.</p>
+
+<p>In order to match the architecture of Backbone, all work with canvas
+(or rather with the object instances of <code>Konva</code>) occurred in <code>Backbone.View</code> instances:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Node</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">layer</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">layer</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">();</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">bindEvents</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nx">el</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(){</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">rect</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Konva</span><span class="p">.</span><span class="nx">Rect</span><span class="p">({</span>
+</span><span class='line'>            <span class="nx">x</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">y</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">width</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">height</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">fill</span> <span class="o">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">id</span> <span class="o">:</span> <span class="s1">&#39;rect&#39;</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">rect</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nx">bindEvents</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;on rectangle clicked&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="c1">// etc ...</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<h2>2 The problem</h2>
+
+<p>But Backbone.View is designed to work with the DOM elements,
+and this approach generates unnecessary div objects and also announcing of events
+in a declarative style (<a href="http://backbonejs.org/#View-delegateEvents">http://backbonejs.org/#View-delegateEvents</a>) is not avalible.</p>
+
+<h3>3 The solution</h3>
+
+<p>I made plugin <a href="https://github.com/lavrton/backbone.konvaview">Backbone.KonvaView</a>,
+which allows to work with objects on the canvas (via Konva) in the same style as the normal
+<code>Backbone.View</code> works with DOM. An example of how the code looks now:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">MyView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">KineticView</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">initialize</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">layer</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">layer</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nx">nodeType</span> <span class="o">:</span> <span class="s1">&#39;Rect&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">attributes</span> <span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">x</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">y</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">width</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">height</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">fill</span> <span class="o">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">id</span> <span class="o">:</span> <span class="s1">&#39;rect&#39;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="c1">// setup events</span>
+</span><span class='line'>    <span class="nx">events</span> <span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s1">&#39;click&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;on rectangle clicked&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">render</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">draw</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyView</span><span class="p">({</span><span class="nx">layer</span><span class="o">:</span><span class="nx">layer</span><span class="p">});</span>
+</span><span class='line'><span class="nx">view</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>This plugin works almost the same way as <code>Backbone.View</code>,
+but only for Konva objects. By analogy tests were adapted from Backbone.View.</p>
+
+<p>Slightly more complex live example can be found here: <a href="http://jsbin.com/fekex/5/edit?js,output">http://jsbin.com/fekex/5/edit?js,output</a></p>
+
+<p>Plugin code: <a href="https://github.com/lavrton/backbone.konvaview">https://github.com/lavrton/backbone.konvaview</a></p>
+
+<p>Perhaps a similar solution can be easily built for such canvas libraries: Easeljs, FabricJS etc.</p>
 </div>
 
 
@@ -174,10 +311,6 @@ http://slash-system.com/en/using-backbone-for-html5-canvas/
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/01/28/using-backbone-with-html5-canvas/">Using Backbone With Html5 Canvas</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2015/04/03/konva-overview/">Konva Overview</a>
       </li>
     
@@ -191,6 +324,10 @@ http://slash-system.com/en/using-backbone-for-html5-canvas/
     
       <li class="post">
         <a href="/blog/2014/10/14/how-to-use-tracker-app/">How to Use Tracker App</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/08/one-month-app-day-44-finish/">One Month App - Day 44 - Done!</a>
       </li>
     
   </ul>

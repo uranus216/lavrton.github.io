@@ -3,12 +3,6 @@
   
   
   <url>
-    <loc>http://lavrton.github.io/blog/2016/01/28/using-backbone-with-html5-canvas/</loc>
-    <lastmod>2016-01-28T09:31:43+00:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
     <loc>http://lavrton.github.io/blog/2015/04/03/konva-overview/</loc>
     <lastmod>2015-04-03T01:00:03+00:00</lastmod>
     <priority>0.8</priority>
@@ -93,6 +87,12 @@
   </url>
   
   <url>
+    <loc>http://lavrton.github.io/blog/2014/05/28/using-backbone-with-html5-canvas/</loc>
+    <lastmod>2014-05-28T09:31:43+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://lavrton.github.io/blog/2014/05/03/how-to-fix-android-html5-canvas-issues/</loc>
     <lastmod>2014-05-03T01:06:13+00:00</lastmod>
     <priority>0.8</priority>
@@ -101,21 +101,21 @@
   
   <url>
     <loc>http://lavrton.github.io/</loc>
-    <lastmod>2016-01-28T09:47:51+00:00</lastmod>
+    <lastmod>2016-01-28T09:50:48+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://lavrton.github.io/blog/archives/</loc>
-    <lastmod>2016-01-28T09:47:51+00:00</lastmod>
+    <lastmod>2016-01-28T09:50:48+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lavrton.github.io/portfolio/</loc>
-    <lastmod>2016-01-28T09:47:51+00:00</lastmod>
+    <lastmod>2016-01-28T09:50:48+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
