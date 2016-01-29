@@ -9,7 +9,7 @@
   <meta name="author" content="Anton Lavrenov">
 
   
-  <meta name="description" content="I spent a lot of time to discover sails framework. It looks like they are refactoring documentation pages. So it is really hard to find information. &hellip;">
+  <meta name="description" content="Today I was implementing don't break the chain part. I have no problems with ReactJS. It is really easy to use it for me. But I feel that I am using &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,98 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/02/one-month-app-day-8/">One Month App - Day 8</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-02T10:11:26+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>10:11 am</span></time>
+        
+           | <a href="/blog/2014/09/02/one-month-app-day-8/#disqus_thread"
+             data-disqus-identifier="http://lavrton.github.io/blog/2014/09/02/one-month-app-day-8/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today I was implementing <code>don't break the chain</code> part. I have no problems with ReactJS. It is really easy to use it for me. But I feel that I am using it in wrong way. I need to find some articles about the best practises.</p>
+
+<p>For example for now I have <code>App</code> class. It has <code>onDelete</code> method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">onDelete</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">question</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">questions</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">question</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">questions</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">throw</span> <span class="s2">&quot;Can&#39;t delete question from state. Has no such question.&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I pass this method into child component:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// render function</span>
+</span><span class='line'><span class="nx">QuestionList</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">questions</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">questions</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">onDelete</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">onDelete</span>  <span class="c1">// pass inside</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But <code>QuestionList</code> also have children, and I need to pass <code>onDelete</code> method into them:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">createItem</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">question</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">AnswerComponent</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">question</span> <span class="o">:</span> <span class="nx">question</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">onDelete</span> <span class="o">:</span> <span class="nx">that</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onDelete</span> <span class="c1">// pass inside again</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Passing same method twice looks very strange for me&hellip;</p>
+
+<p>Currently I have this prototype:
+<img class="center" src="/images/dash-proto-1.jpg" title="" ></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -257,176 +349,6 @@ I want to calculate such categories of my life:</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/05/28/using-backbone-with-html5-canvas/">Using Backbone With Html5 Canvas</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-28T09:31:43+00:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:31 am</span></time>
-        
-           | <a href="/blog/2014/05/28/using-backbone-with-html5-canvas/#disqus_thread"
-             data-disqus-identifier="http://lavrton.github.io/blog/2014/05/28/using-backbone-with-html5-canvas/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>1 Description of the problem</h2>
-
-<p>While developing mind map application Slash System,
-I chose Backbone as the main library to build an application.
-The mind map is drawn into <code>&lt;canvas&gt;</code> element using various primitives.
-We chose KineticJS (now it is <a href="http://konvajs.github.io/">Konva</a>) library to work with canvas,
-as it perfectly supports events for objects on the canvas.</p>
-
-<p>In order to match the architecture of Backbone, all work with canvas
-(or rather with the object instances of <code>Konva</code>) occurred in <code>Backbone.View</code> instances:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Node</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
-</span><span class='line'>    <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">layer</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">layer</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">();</span>
-</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">bindEvents</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">},</span>
-</span><span class='line'>    <span class="nx">el</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">rect</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Konva</span><span class="p">.</span><span class="nx">Rect</span><span class="p">({</span>
-</span><span class='line'>            <span class="nx">x</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-</span><span class='line'>            <span class="nx">y</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-</span><span class='line'>            <span class="nx">width</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
-</span><span class='line'>            <span class="nx">height</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
-</span><span class='line'>            <span class="nx">fill</span> <span class="o">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span>
-</span><span class='line'>            <span class="nx">id</span> <span class="o">:</span> <span class="s1">&#39;rect&#39;</span>
-</span><span class='line'>        <span class="p">});</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nx">rect</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">},</span>
-</span><span class='line'>    <span class="nx">bindEvents</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;on rectangle clicked&quot;</span><span class="p">);</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>        <span class="c1">// etc ...</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>2 The problem</h2>
-
-<p>But Backbone.View is designed to work with the DOM elements,
-and this approach generates unnecessary div objects and also announcing of events
-in a declarative style (<a href="http://backbonejs.org/#View-delegateEvents">http://backbonejs.org/#View-delegateEvents</a>) is not avalible.</p>
-
-<h3>3 The solution</h3>
-
-<p>I made plugin <a href="https://github.com/lavrton/backbone.konvaview">Backbone.KonvaView</a>,
-which allows to work with objects on the canvas (via Konva) in the same style as the normal
-<code>Backbone.View</code> works with DOM. An example of how the code looks now:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">MyView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">KineticView</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
-</span><span class='line'>    <span class="nx">initialize</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">layer</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">layer</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">},</span>
-</span><span class='line'>    <span class="nx">nodeType</span> <span class="o">:</span> <span class="s1">&#39;Rect&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">attributes</span> <span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">x</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">y</span> <span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">width</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">height</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">fill</span> <span class="o">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">id</span> <span class="o">:</span> <span class="s1">&#39;rect&#39;</span>
-</span><span class='line'>    <span class="p">},</span>
-</span><span class='line'>    <span class="c1">// setup events</span>
-</span><span class='line'>    <span class="nx">events</span> <span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>        <span class="s1">&#39;click&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;on rectangle clicked&quot;</span><span class="p">);</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="nx">render</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">);</span>
-</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">draw</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyView</span><span class="p">({</span><span class="nx">layer</span><span class="o">:</span><span class="nx">layer</span><span class="p">});</span>
-</span><span class='line'><span class="nx">view</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This plugin works almost the same way as <code>Backbone.View</code>,
-but only for Konva objects. By analogy tests were adapted from Backbone.View.</p>
-
-<p>Slightly more complex live example can be found here: <a href="http://jsbin.com/fekex/5/edit?js,output">http://jsbin.com/fekex/5/edit?js,output</a></p>
-
-<p>Plugin code: <a href="https://github.com/lavrton/backbone.konvaview">https://github.com/lavrton/backbone.konvaview</a></p>
-
-<p>Perhaps a similar solution can be easily built for such canvas libraries: Easeljs, FabricJS etc.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2014/05/03/how-to-fix-android-html5-canvas-issues/">How to Fix Android Html5 Canvas Issues</a></h1>
     
     
@@ -571,6 +493,10 @@ I added some comments. So you will understand how to use tips with other framewo
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/29/how-to-login-into-google-on-apple-mobile-web-app-capable-mode/">How to Login Into Google on Apple-mobile-web-app-capable Mode</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/04/03/konva-overview/">Konva Overview</a>
       </li>
     
@@ -579,15 +505,11 @@ I added some comments. So you will understand how to use tips with other framewo
       </li>
     
       <li class="post">
-        <a href="/blog/2014/11/05/using-backbone-for-html5-canvas/">Using Backbone for Html5 Canvas</a>
+        <a href="/blog/2014/11/05/using-backbone-for-html5-canvas/">Using Backbone With Html5 Canvas</a>
       </li>
     
       <li class="post">
         <a href="/blog/2014/10/14/how-to-use-tracker-app/">How to Use Tracker App</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/08/one-month-app-day-44-finish/">One Month App - Day 44 - Done!</a>
       </li>
     
   </ul>
