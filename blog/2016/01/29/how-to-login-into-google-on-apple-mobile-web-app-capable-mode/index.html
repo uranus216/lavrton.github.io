@@ -9,8 +9,8 @@
   <meta name="author" content="Anton Lavrenov">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="I was making web applications and testing it on iOS with apple-mobile-web-app-capable mode meta tag.
+I discovered that user can not login into Google &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,7 +101,99 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><p>I was making web applications and testing it on iOS with <code>apple-mobile-web-app-capable mode</code> meta tag.
+I discovered that user can not login into Google accaunt with gapi via:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">conf</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">client_id</span><span class="o">:</span> <span class="nx">id</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">scope</span><span class="o">:</span> <span class="nx">scope</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">immediate</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="nx">gapi</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="nx">conf</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Looks like iOS blocks popup login message.
+It is possible to avoid such behaviour with authorization with full page redirect:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">href</span> <span class="o">=</span> <span class="s1">&#39;https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2F&#39;</span> <span class="o">+</span>
+</span><span class='line'> <span class="nx">redirectURL</span> <span class="o">+</span> <span class="s1">&#39;&amp;response_type=code&amp;client_id=&#39;</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39;&amp;&#39;</span> <span class="o">+</span>
+</span><span class='line'> <span class="s1">&#39;scope=&#39;</span> <span class="o">+</span>
+</span><span class='line'> <span class="s1">&#39;https://www.googleapis.com/auth/drive.file%20&#39;</span> <span class="o">+</span>
+</span><span class='line'> <span class="s1">&#39;https://www.googleapis.com/auth/drive.install%20&#39;</span> <span class="o">+</span> <span class="s1">&#39;https://www.googleapis.com/auth/userinfo.profile&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// first try to immediate login without popup. May be user already logged?</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">conf</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">client_id</span><span class="o">:</span> <span class="nx">id</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">scope</span><span class="o">:</span> <span class="nx">scope</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">immediate</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="nx">gapi</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="nx">conf</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">authResult</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// if everything is ok go on</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">authResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">authResult</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">defer</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">authResult</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// can not do immediate login</span>
+</span><span class='line'>      <span class="c1">// if we have on `apple-mobile-web-app-capable` mode we should redirect to google login page</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">standalone</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">href</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">// use usual login API from gapi.</span>
+</span><span class='line'>          <span class="nx">conf</span><span class="p">.</span><span class="nx">immediate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>          <span class="nx">gapi</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="nx">conf</span><span class="p">,</span> <span class="p">(</span><span class="nx">authResult</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>              <span class="k">if</span> <span class="p">(</span><span class="nx">authResult</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="nx">defer</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">authResult</span><span class="p">);</span>
+</span><span class='line'>              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="nx">defer</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">authResult</span><span class="p">);</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Done!</p>
 </div>
 
 
