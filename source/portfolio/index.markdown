@@ -7,7 +7,77 @@ sharing: false
 footer: true
 ---
 
-List of project I have done. Last update: 2015-04-30.
+List of project I have done. Last update: 2015-09-10
+
+
+### [2015 Winter - Current] Open Source Konva html5 2d canvas framework
+
+{% img center /images/portfolio_konva.png  %}
+
+Description: There was really cool and popular canvas framework KineticJS. I was using it a lot and started to contribute to Kineticjs code base.
+But in Dec of 2014 KineticJS maintainer stoped the project. So I decided to fork it and maintain by myself.
+
+GitHub repo: [https://github.com/konvajs/konva](https://github.com/konvajs/konva)
+
+*Keywords: html5 canvas, Konva, Open Source*
+
+
+### [2012 Spring - 2015 Spring] Mind Map Application
+
+{% img center /images/portfolio_slash.png  %}
+
+Description: Client side browser mind map application with offline access. This is the most awesome project for me.
+
+Link: [http://slash-system.com/](http://slash-system.com/)
+
+*Keywords: TypeScript, Backbone, TDD, unit test, mocha, requirejs, Konva*
+
+
+### [2014 Autumn-Winter] Gantt tasks application
+
+{% img center /images/portfolio_gantt.png  %}
+
+Task: create client side application for managing tasks with gantt visualization.
+Communication via REST API.
+
+Source: [https://github.com/2bitcoder/Jquery-Gantt](https://github.com/2bitcoder/Jquery-Gantt)
+
+*Keywords: Backbone, React, Konva, browserify, semantic*
+
+
+
+### [2014 Autumn-Winter] Google Analytic realtime visualization
+
+{% img center /images/portfolio_ga.png  %}
+
+Task: create visualization for with google analytics realtime API
+
+Demo: [http://lavrton.github.io/ga-vis/](http://lavrton.github.io/ga-vis/)
+
+*Keywords: Konva, d3, canvas, visualization*
+
+
+### [2015 June - Current] Eventship - Mobile App
+
+{% img center /images/portfolio_eventship.png  %}
+
+About: hobby project. Motivation and Retrospective Mobile App.
+
+Run: [https://eventship.mobi/](https://eventship.mobi/)
+
+*Keywords: angular, ionic, firebase*
+
+
+### [2015 Spring - Current] Prokatium - thing renting service
+
+{% img center /images/portfolio_prokatium.png  %}
+
+About: hobby project. Local service for publication and searching thins renting ads.
+
+Run: [http://prokatium.ru/](http://prokatium.ru/)
+
+*Keywords: nodejs, mongo, sailsjs, heroku*
+
 
 
 ### [2015 Spring] Image annotation tool
@@ -37,16 +107,6 @@ Description: Update existing mobile proto template. I needed to refactring code,
 *Keywords: html5 canvas, Konva, requirejs, Marionette*
 
 
-### [2014 Autumn-Winter] Gantt tasks application
-
-{% img center /images/portfolio_gantt.png  %}
-
-Task: create client side application for managing tasks with gantt visualization.
-Communication via REST API.
-
-Source: [https://github.com/2bitcoder/Jquery-Gantt](https://github.com/2bitcoder/Jquery-Gantt)
-
-*Keywords: Backbone, React, Konva, browserify, semantic*
 
 ### [2014 Autumn] PDF report generator
 
@@ -79,15 +139,3 @@ Images and voice are not my work.
 [DEMO](./canvas_questions/index.html)
 
 *Keywords: flash-to-html5-canvas, KineticJS*
-
-
-### [2012 Spring - Current Moment] Mind Map Application
-
-{% img center /images/portfolio_slash.png  %}
-
-Description: Client side browser mind map application with offline access. This is the most awesome project for me.
-
-Link: [http://slash-system.com/](http://slash-system.com/)
-
-*Keywords: TypeScript, Backbone, TDD, unit test, mocha, requirejs, Konva*
-
