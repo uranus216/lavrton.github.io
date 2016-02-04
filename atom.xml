@@ -4,7 +4,7 @@
   <title><![CDATA[lavrton]]></title>
   <link href="http://lavrton.github.io/atom.xml" rel="self"/>
   <link href="http://lavrton.github.io/"/>
-  <updated>2016-02-02T07:55:34+00:00</updated>
+  <updated>2016-02-04T03:47:09+00:00</updated>
   <id>http://lavrton.github.io/</id>
   <author>
     <name><![CDATA[Anton Lavrenov]]></name>
@@ -18,7 +18,7 @@
     <link href="http://lavrton.github.io/blog/2016/01/29/how-to-login-into-google-on-apple-mobile-web-app-capable-mode/"/>
     <updated>2016-01-29T22:59:27+00:00</updated>
     <id>http://lavrton.github.io/blog/2016/01/29/how-to-login-into-google-on-apple-mobile-web-app-capable-mode</id>
-    <content type="html"><![CDATA[<p>I was making web applications and testing it on iOS with <code>apple-mobile-web-app-capable mode</code> meta tag.
+    <content type="html"><![CDATA[<p>I was making web applications and testing it on iOS with <code>apple-mobile-web-app-capable</code> meta tag.
 I discovered that user can not login into Google accaunt with gapi via:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
