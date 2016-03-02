@@ -10,9 +10,13 @@
     <body>
         <div id="container">
         </div>
-        <!-- <script src="//cdn.rawgit.com/hammerjs/touchemulator/0.0.2/touch-emulator.js"></script>
-        <script src="https://rawgit.com/mudcube/Event.js/master/js/Event.js"></script>
-        <script> TouchEmulator(); </script> -->
         <script type="text/javascript" src="./bundle.js"></script>
+        <script>
+            createBuilder({
+                container: 'container',
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        </script>
     </body>
 </html>
