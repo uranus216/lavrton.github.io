@@ -14,10 +14,48 @@
         </div>
         <script type="text/javascript" src="./bundle.js"></script>
         <script>
+            // possible symbols are:
+            // 'light-12x03empty', 'light-12x03once', 'light-12x03double',
+            // 'light-12x06empty', 'light-12x06double',
+            // 'light-06x06empty', 'light-06x06double',
+            // 'light-01circle', 'light-02circle', 'light-04circle',
+            // 'light-03x015empty',
+            // 'light-12x02empty', 'light-12x02once', 'light-12x02double',
+            // 'light-12x01empty'
+
+            // fist we need to get luminaires from server
+            // here we can have AJAX requiest
+            // or JSON injected into HTML in backend
+            var luminaires = [{
+                // baseline symbol
+                symbolType: 'light-12x03empty',
+
+                // Baseline Luminare Type?
+                baselineType: 'Recessed',
+                // Upgraded Luminaire type ?
+                upgradedLampType: 'Recessed',
+
+                // Type of baseline lighting control device on circuit?
+                baselineLightingControl: 'No Control System',
+                // Type of upgraded light control device on circuit
+                upgradedLightingControl: 'No Control System',
+
+                // upgraded symbol
+                upgradedSymbolType: 'light-12x03empty',
+
+                letter: 'A',
+                // id is required for internal usage, I can refactor code later to generate id if it is empty
+                id: _.uniqueId()
+            }];
+
+
             createBuilder({
+                // id of container element
                 container: 'container',
+
                 width: window.innerWidth,
-                height: window.innerHeight
+                height: window.innerHeight,
+                luminaires: luminaires
             });
         </script>
     </body>
