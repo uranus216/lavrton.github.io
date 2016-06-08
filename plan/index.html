@@ -103,7 +103,20 @@
                 }
             });
 
-            createBuilder(builderProps);
+
+            try {
+                var builder = createBuilder(builderProps);
+
+                // use this any time you need to get application data
+                // console.log(builder.getData());
+            } catch (e) {
+                console.error(e);
+                if (confirm('Error while loading application. See console for more details. Reload?')) {
+                    localStorage.removeItem('floor_builder')
+                    location.reload();
+                }
+            }
+
         </script>
     </body>
 </html>

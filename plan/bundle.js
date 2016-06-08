@@ -139,6 +139,12 @@
 	        })();
 	    }
 	    _reactDom2.default.render(component, document.getElementById(container));
+
+	    return {
+	        getData: function getData() {
+	            return toJSON(store.getState());
+	        }
+	    };
 	};
 
 /***/ },
@@ -4982,10 +4988,10 @@
 
 	/* WEBPACK VAR INJECTION */(function(global) {
 	/*
-	 * Konva JavaScript Framework v0.12.4
+	 * Konva JavaScript Framework v0.13.0
 	 * http://konvajs.github.io/
 	 * Licensed under the MIT or GPL Version 2 licenses.
-	 * Date: Tue Apr 19 2016
+	 * Date: Tue Jun 07 2016
 	 *
 	 * Original work Copyright (C) 2011 - 2013 by Eric Rowell (KineticJS)
 	 * Modified work Copyright (C) 2014 - 2015 by Anton Lavrenov (Konva)
@@ -5021,7 +5027,7 @@
 
 	    var Konva = {
 	        // public
-	        version: '0.12.4',
+	        version: '0.13.0',
 
 	        // private
 	        stages: [],
@@ -5155,6 +5161,29 @@
 	        getAngle: function(angle) {
 	            return this.angleDeg ? angle * PI_OVER_180 : angle;
 	        },
+	        _detectIE: function(ua) {
+	            var msie = ua.indexOf('msie ');
+	            if (msie > 0) {
+	                // IE 10 or older => return version number
+	                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+	            }
+
+	            var trident = ua.indexOf('trident/');
+	            if (trident > 0) {
+	                // IE 11 => return version number
+	                var rv = ua.indexOf('rv:');
+	                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+	            }
+
+	            var edge = ua.indexOf('edge/');
+	            if (edge > 0) {
+	                // Edge (IE 12+) => return version number
+	                return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+	            }
+
+	            // other browser
+	            return false;
+	        },
 	        _parseUA: function(userAgent) {
 	            var ua = userAgent.toLowerCase(),
 	                // jQuery UA regex
@@ -5172,7 +5201,7 @@
 	            return {
 	                browser: match[ 1 ] || '',
 	                version: match[ 2 ] || '0',
-
+	                isIE: Konva._detectIE(ua),
 	                // adding mobile flab
 	                mobile: mobile,
 	                ieMobile: ieMobile  // If this is true (i.e., WP8), then Konva touch events are executed instead of equivalent Konva mouse events
@@ -5189,6 +5218,7 @@
 
 
 	    Konva.UA = Konva._parseUA((glob.navigator && glob.navigator.userAgent) || '');
+
 
 	    if (glob.Konva) {
 	        console.error(
@@ -5212,8 +5242,8 @@
 	            var Canvas = __webpack_require__(40);
 	            var jsdom = __webpack_require__(41).jsdom;
 
-	            Konva.document = jsdom('<!DOCTYPE html><html><head></head><body></body></html>');
-	            Konva.window = Konva.document.parentWindow;
+	            Konva.window = jsdom('<!DOCTYPE html><html><head></head><body></body></html>').defaultView;
+	            Konva.document = Konva.window.document;
 	            Konva.window.Image = Canvas.Image;
 	            Konva._nodeCanvas = Canvas;
 	        }
@@ -9027,9 +9057,11 @@
 	                this._fire(eventType, evt);
 
 	                // simulate event bubbling
-	                var stopBubble = (eventType === MOUSEENTER || eventType === MOUSELEAVE) && ((compareShape && compareShape.isAncestorOf && compareShape.isAncestorOf(this)) || !!(compareShape && compareShape.isAncestorOf));
+	                var stopBubble =
+	                    (eventType === MOUSEENTER || eventType === MOUSELEAVE) &&
+	                    ((compareShape && compareShape.isAncestorOf && compareShape.isAncestorOf(this) && !compareShape.isAncestorOf(this.parent)));
 	                if((evt && !evt.cancelBubble || !evt) && this.parent && this.parent.isListening() && (!stopBubble)) {
-	                    if(compareShape && compareShape.parent) {
+	                    if (compareShape && compareShape.parent) {
 	                        this._fireAndBubble.call(this.parent, eventType, evt, compareShape.parent);
 	                    }
 	                    else {
@@ -11600,9 +11632,6 @@
 	                // reset parent to prevent many _setChildrenIndices calls
 	                delete child.parent;
 	                child.index = 0;
-	                if (child.hasChildren()) {
-	                    child.removeChildren();
-	                }
 	                child.remove();
 	            }
 	            children = null;
@@ -15289,8 +15318,8 @@
 	    Konva.Animation._animationLoop = function() {
 	        var Anim = Konva.Animation;
 	        if(Anim.animations.length) {
-	            requestAnimFrame(Anim._animationLoop);
 	            Anim._runFrames();
+	            requestAnimFrame(Anim._animationLoop);
 	        }
 	        else {
 	            Anim.animRunning = false;
@@ -15299,7 +15328,7 @@
 	    Konva.Animation._handleAnimation = function() {
 	        if(!this.animRunning) {
 	            this.animRunning = true;
-	            this._animationLoop();
+	            requestAnimFrame(this._animationLoop);
 	        }
 	    };
 
@@ -15517,9 +15546,15 @@
 	        this.node = node;
 	        this._id = idCounter++;
 
+	        var layers = node.getLayer() || ((node instanceof Konva.Stage) ? node.getLayers() : null);
+	        if (!layers) {
+	            Konva.Util.error(
+	                'Tween constructor have `node` that is not in a layer. Please add node into layer first.'
+	            );
+	        }
 	        this.anim = new Konva.Animation(function() {
 	            that.tween.onEnterFrame();
-	        }, node.getLayer() || ((node instanceof Konva.Stage) ? node.getLayers() : null));
+	        }, layers);
 
 	        this.tween = new Tween(key, function(i) {
 	            that._tweenFunc(i);
@@ -18009,7 +18044,17 @@
 	            };
 	        },
 	        _getContextFont: function() {
-	            return this.getFontStyle() + SPACE + this.getFontVariant() + SPACE + this.getFontSize() + PX_SPACE + this.getFontFamily();
+	            // IE don't want to work with usual font style
+	            // bold was not working
+	            // removing font variant will solve
+	            // fix for: https://github.com/konvajs/konva/issues/94
+	            if (Konva.UA.isIE) {
+	                return this.getFontStyle() + SPACE + this.getFontSize() + PX_SPACE + this.getFontFamily();
+	            }
+	            return this.getFontStyle() + SPACE +
+	                    this.getFontVariant() + SPACE +
+	                    this.getFontSize() + PX_SPACE +
+	                    this.getFontFamily();
 	        },
 	        _addTextLine: function (line, width) {
 	            return this.textArr.push({text: line, width: width});
@@ -19128,8 +19173,7 @@
 	            this.sceneFunc(this._sceneFunc);
 	        },
 	        _sceneFunc: function(context) {
-	            var ca = this.dataArray,
-	                closedPath = false;
+	            var ca = this.dataArray;
 
 	            // context position
 	            context.beginPath();
@@ -19167,17 +19211,11 @@
 	                        break;
 	                    case 'z':
 	                        context.closePath();
-	                        closedPath = true;
 	                        break;
 	                }
 	            }
 
-	            if (closedPath) {
-	                context.fillStrokeShape(this);
-	            }
-	            else {
-	                context.strokeShape(this);
-	            }
+	            context.fillStrokeShape(this);
 	        },
 	        getSelfRect: function() {
 	            var points = [];
@@ -48848,6 +48886,31 @@
 	    };
 	})(NorthInner);
 
+	function LuxLevelInner(props) {
+	    return _react2.default.createElement(_reactKonva.Text, _extends({
+	        text: 'Average lux: ' + props.averLux
+	    }, title));
+	}
+
+	LuxLevelInner.propTypes = {
+	    averLux: _react2.default.PropTypes.number.isRequired
+	};
+
+	var LuxLevel = (0, _reactRedux.connect)(function (state) {
+	    var luxes = state.objects.filter(function (o) {
+	        return o.type === 'cross-hair';
+	    });
+	    var averLux = _lodash2.default.reduce(luxes, function () {
+	        var sum = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+	        var lux = arguments[1];
+
+	        return sum + lux.lux / luxes.length;
+	    }, 0);
+	    return {
+	        averLux: averLux
+	    };
+	})(LuxLevelInner);
+
 	var Legend = function (_React$Component4) {
 	    _inherits(Legend, _React$Component4);
 
@@ -48888,15 +48951,6 @@
 	            if (this.props.width < 600) {
 	                return _react2.default.createElement(_reactKonva.Group, null);
 	            }
-	            var luxes = this.props.objects.filter(function (o) {
-	                return o.type === 'cross-hair';
-	            });
-	            var averLux = _lodash2.default.reduce(luxes, function () {
-	                var sum = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
-	                var lux = arguments[1];
-
-	                return sum + lux.lux / luxes.length;
-	            }, 0);
 
 	            var BaselineData = getLuminaireList({
 	                objects: this.props.objects,
@@ -48929,11 +48983,11 @@
 	                    y: textOffset * 3
 	                })),
 	                BaselineData.component,
-	                _react2.default.createElement(_reactKonva.Text, _extends({
-	                    text: 'Average lux: ' + averLux
-	                }, title, {
-	                    y: textOffset * 4 + BaselineData.height
-	                })),
+	                _react2.default.createElement(
+	                    _reactKonva.Group,
+	                    { y: textOffset * 4 + BaselineData.height },
+	                    _react2.default.createElement(LuxLevel, null)
+	                ),
 	                _react2.default.createElement(
 	                    _reactKonva.Group,
 	                    { y: textOffset * 5 + BaselineData.height + 100, x: 50 },
@@ -50645,6 +50699,8 @@
 
 	var _utils = __webpack_require__(88);
 
+	var utils = _interopRequireWildcard(_utils);
+
 	var _lodash = __webpack_require__(89);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
@@ -50658,6 +50714,10 @@
 	var _selectors = __webpack_require__(131);
 
 	var selectors = _interopRequireWildcard(_selectors);
+
+	var _rotate = __webpack_require__(139);
+
+	var _rotate2 = _interopRequireDefault(_rotate);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -50685,6 +50745,9 @@
 	    pointerWidth: 2
 	};
 
+	var rotateImage = new window.Image();
+	rotateImage.src = _rotate2.default;
+
 	var Editable = function (_React$Component) {
 	    _inherits(Editable, _React$Component);
 
@@ -50709,6 +50772,9 @@
 
 	        _this.handleControllerDragMove = _this.handleControllerDragMove.bind(_this);
 	        _this.handleControllerDragEnd = _this.handleControllerDragEnd.bind(_this);
+
+	        _this.handleRotaterDragMove = _this.handleRotaterDragMove.bind(_this);
+	        _this.handleRotaterDragEnd = _this.handleRotaterDragEnd.bind(_this);
 	        return _this;
 	    }
 
@@ -50766,6 +50832,44 @@
 	    }, {
 	        key: 'handleControllerDragEnd',
 	        value: function handleControllerDragEnd() {
+	            this.props.updateObject(this.props.object.id, { points: this.state.points });
+	        }
+	    }, {
+	        key: 'handleRotaterDragMove',
+	        value: function handleRotaterDragMove(e) {
+	            var points = this.state.points;
+
+
+	            var centerX = (points[0].x + points[1].x) / 2;
+	            var centerY = (points[0].y + points[1].y) / 2;
+
+	            var length = utils.getLength(points);
+
+	            var pos = e.target.position();
+
+	            var x = pos.x - centerX;
+	            var y = pos.y - centerY;
+
+	            var alpha = Math.atan2(-y, x);
+	            if (y >= 0) {
+	                alpha = Math.PI * 2 + alpha;
+	            }
+	            alpha = -(0, _utils.roundBy)(alpha + Math.PI, Math.PI / 8) % (Math.PI * 2);
+
+	            var newPoints = [{
+	                x: centerX + length / 2 * Math.cos(alpha + Math.PI / 2),
+	                y: centerY + length / 2 * Math.sin(alpha + Math.PI / 2)
+	            }, {
+	                x: centerX + length / 2 * Math.cos(alpha - Math.PI / 2),
+	                y: centerY + length / 2 * Math.sin(alpha - Math.PI / 2)
+	            }];
+
+	            this.setState({ points: newPoints });
+	            this.forceUpdate();
+	        }
+	    }, {
+	        key: 'handleRotaterDragEnd',
+	        value: function handleRotaterDragEnd() {
 	            this.props.updateObject(this.props.object.id, { points: this.state.points });
 	        }
 	    }, {
@@ -50847,7 +50951,13 @@
 	            });
 	            return _react2.default.createElement(
 	                _reactKonva.Group,
-	                { x: handlerX, y: handlerY, visible: !!this.props.draggable },
+	                {
+	                    x: handlerX,
+	                    y: handlerY,
+	                    visible: !!this.props.draggable,
+	                    onMouseenter: _utils.showPointer,
+	                    onMouseleave: _utils.hidePointer
+	                },
 	                _react2.default.createElement(_reactKonva.Rect, {
 	                    x: -handlerSize, y: -handlerSize,
 	                    width: handlerSize * 2, height: handlerSize * 2
@@ -50884,6 +50994,55 @@
 	                x: labelX, y: labelY,
 	                visible: !!label
 	            });
+	        }
+	    }, {
+	        key: 'renderRotateHandler',
+	        value: function renderRotateHandler() {
+	            var points = this.state.points;
+	            var scale = this.props.scale;
+
+
+	            var centerX = (points[0].x + points[1].x) / 2;
+	            var centerY = (points[0].y + points[1].y) / 2;
+
+	            var controllerStyle = _extends({}, CONTROLLER_STYLE, {
+	                radius: CONTROLLER_STYLE.radius / this.props.scale,
+	                strokeWidth: CONTROLLER_STYLE.strokeWidth / this.props.scale
+	            });
+
+	            var dx = points[0].x - points[1].x;
+	            var dy = points[0].y - points[1].y;
+	            var alpha = Math.atan2(-dy, dx) - Math.PI;
+	            if (dy >= 0) {
+	                alpha = Math.PI * 2 + alpha;
+	            }
+
+	            alpha = (alpha + Math.PI / 2) % (2 * Math.PI);
+	            var offset = 80 / scale;
+
+	            return _react2.default.createElement(
+	                _reactKonva.Group,
+	                {
+	                    x: centerX + offset * Math.cos(alpha),
+	                    y: centerY - offset * Math.sin(alpha),
+	                    draggable: true,
+	                    onDragmove: this.handleRotaterDragMove,
+	                    onDragEnd: this.handleRotaterDragEnd,
+	                    rotation: alpha / 180 * Math.PI,
+	                    onMouseenter: _utils.showPointer,
+	                    onMouseleave: _utils.hidePointer
+	                },
+	                _react2.default.createElement(_reactKonva.Circle, _extends({}, controllerStyle, {
+	                    opacity: 0.1,
+	                    y: -1
+	                })),
+	                _react2.default.createElement(_reactKonva.Image, {
+	                    image: rotateImage,
+	                    offsetX: 10 / scale, offsetY: 10 / scale,
+	                    width: 20 / scale,
+	                    height: 20 / scale
+	                })
+	            );
 	        }
 	    }, {
 	        key: 'render',
@@ -50923,7 +51082,8 @@
 	                    _reactKonva.Group,
 	                    { name: 'editGroup' },
 	                    this.renderHandler(),
-	                    this.renderControllPoints()
+	                    this.renderControllPoints(),
+	                    this.props.hasRotateHandle ? this.renderRotateHandler() : null
 	                ) : null
 	            );
 	        }
@@ -50939,6 +51099,7 @@
 	    object: _react2.default.PropTypes.object.isRequired,
 	    draggable: _react2.default.PropTypes.bool,
 	    notEditable: _react2.default.PropTypes.bool,
+	    hasRotateHandle: _react2.default.PropTypes.bool,
 
 	    scale: _react2.default.PropTypes.number.isRequired,
 	    label: _react2.default.PropTypes.string,
@@ -51042,7 +51203,7 @@
 	};
 
 	function Door(props) {
-	    return _react2.default.createElement(_editable2.default, _extends({}, props, { draggable: true, child: DoorInner }));
+	    return _react2.default.createElement(_editable2.default, _extends({}, props, { draggable: true, child: DoorInner, hasRotateHandle: true }));
 	}
 
 /***/ },
@@ -51633,25 +51794,23 @@
 	    }, {
 	        key: 'handleRotaterMove',
 	        value: function handleRotaterMove(e) {
-	            var x = e.target.x() + this.props.object.width / 2;
-	            var y = e.target.y() + this.props.object.height / 2 + 50;
-	            var alpha = Math.atan2(-y, x);
-	            alpha = -alpha % (Math.PI * 2);
-
-	            var rotation = this.props.object.rotation + alpha;
 
 	            var object = this.props.object;
 
+	            var x = e.target.x();
+	            var y = e.target.y();
+	            var alpha = -Math.atan2(-y, x) + Math.PI / 2;
+
+	            var rotation = this.props.object.rotation + alpha;
+
 	            this.props.updateObject(this.props.object.id, {
-	                rotation: rotation
+	                rotation: rotation,
+	                x: object.x + object.width / 2 * (Math.cos(object.rotation) - Math.cos(rotation)) + object.height / 2 * (Math.sin(-object.rotation) - Math.sin(-rotation)),
+	                y: object.y + object.height / 2 * (Math.cos(object.rotation) - Math.cos(rotation)) + object.width / 2 * (Math.sin(object.rotation) - Math.sin(rotation))
 	            });
 	        }
 	    }, {
 	        key: 'handleClick',
-	        // x: (object.x) + object.width / 2 * (Math.cos(object.rotation) - Math.cos(rotation)) +
-	        // object.height / 2 * (Math.sin(object.rotation) - Math.sin(rotation)),
-	        // y: (object.y) + object.height / 2 * (Math.cos(object.rotation) - Math.cos(rotation)) +
-	        // object.width / 2 * (Math.sin(object.rotation) - Math.sin(rotation))
 	        value: function handleClick() {
 	            this.props.selectObjects([this.props.object.id]);
 	        }
@@ -51701,7 +51860,16 @@
 	            });
 
 	            var object = this.props.object;
-	            console.log(object.rotation, object.x, 'centerX', object.x + object.width / 2 * Math.cos(object.rotation) + object.height / 2 * Math.sin(object.rotation));
+	            // console.log(
+	            //     'rotation', object.rotation,
+	            //     'object x', object.x, 'centerX',
+	            //     object.x + object.width / 2 * Math.cos(object.rotation) +
+	            //     object.height / 2 * Math.sin(-object.rotation),
+	            //     'object y', object.y, 'centerY',
+	            //     object.y + object.height / 2 * Math.cos(object.rotation) +
+	            //     object.width / 2 * Math.sin(object.rotation)
+	            // );
+
 	            return _react2.default.createElement(
 	                _reactKonva.Group,
 	                { x: handlerX, y: handlerY },
@@ -51801,7 +51969,7 @@
 	                        _reactKonva.Group,
 	                        {
 	                            x: 0,
-	                            y: -object.height / 2 - 50,
+	                            y: -object.height / 2 - 50 / this.props.scale,
 	                            draggable: true,
 	                            onDragmove: this.handleRotaterMove
 	                        },
